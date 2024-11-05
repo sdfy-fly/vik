@@ -6,7 +6,7 @@ public class DoorController : MonoBehaviour
     public Transform door; // Ссылка на объект двери
     public Transform handle; // Ссылка на ручку
 
-    private bool isOpen = false; // Состояние двери
+    public bool isOpen = false; // Состояние двери
 
     private void Update()
     {

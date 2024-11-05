@@ -10,14 +10,16 @@ public class Box : MonoBehaviour
     public float openSpeed = 2f;         // Скорость открытия
 
     private bool isOpening = false;      // Внутренний флаг для открытия дверей
+    public bool hasOpened = false;       // Флаг, указывающий, была ли коробка открыта
 
     // Метод, который будет вызываться при взаимодействии
     public void OnSelectEntered()
     {
-        if (canBeOpened && !isOpening)
+        if (canBeOpened && !isOpening && !hasOpened) // Проверяем флаг hasOpened
         {
             isOpening = true; // Начинаем процесс открытия
             OpenDoors();
+            hasOpened = true; // Устанавливаем флаг, что коробка уже открыта
         }
     }
 
