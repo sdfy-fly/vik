@@ -7,18 +7,21 @@ public class SceneController : MonoBehaviour
 
     public GameObject welcomeScene;
     public GameObject gameModeScene;
+    public GameObject levelScene;
 
     // Start is called before the first frame update
     void Start()
     {
         this.welcomeScene.SetActive(true);
         this.gameModeScene.SetActive(false);
+        this.levelScene.SetActive(false);
     }
 
     public void StartGame()
     {
         this.welcomeScene.SetActive(false);
         this.gameModeScene.SetActive(true);
+        this.levelScene.SetActive(false);
     }
 
     public void ExitGame()
@@ -31,4 +34,19 @@ public class SceneController : MonoBehaviour
             Application.Quit();
         #endif
     }
+
+    public void SetTrainGameMode()
+    {
+        this.welcomeScene.SetActive(false);
+        this.gameModeScene.SetActive(false);
+        this.levelScene.SetActive(true);
+    }
+
+    public void SetEducationGameMode()
+    {
+        this.welcomeScene.SetActive(false);
+        this.gameModeScene.SetActive(false);
+        this.levelScene.SetActive(true);
+    }
+
 }
