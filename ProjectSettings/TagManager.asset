@@ -14,6 +14,7 @@ TagManager:
   - BunkerDer
   - BasketFree
   - BasketDer
+  - LargePotato
   layers:
   - Default
   - TransparentFX
