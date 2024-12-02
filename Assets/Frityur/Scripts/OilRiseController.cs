@@ -9,6 +9,7 @@ public class OilRiseController : MonoBehaviour
 
     private Vector3 initialPosition; // Начальная позиция масла
     private bool isRising = false; // Флаг для отслеживания подъема
+    public bool isActive = false;
 
     private void Start()
     {
@@ -41,6 +42,7 @@ public class OilRiseController : MonoBehaviour
             if (oilObject.position == targetPosition)
             {
                 isRising = false;
+                isActive = true;
             }
         }
     }
