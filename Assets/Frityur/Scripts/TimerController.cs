@@ -25,6 +25,8 @@ public class TimerController : MonoBehaviour
 
     public void StartTimer()
     {
+        finishTimeDuration = 5f;
+        finishTimeRemaining = 5f;
         if (oilRiseObject.GetComponent<OilRiseController>() != null 
             && oilRiseObject.GetComponent<OilRiseController>().isActive 
             && !isTimerRunning 
@@ -43,7 +45,7 @@ public class TimerController : MonoBehaviour
             && activeChildObjectRaw.activeSelf // Дочерний объект активен
             && timerText.text != "Встряхните") 
         {
-            Debug.Log("первоначальная хуйня");
+            Debug.Log("первоначальная");
             TimerOperation();
         }
         // Проверяем все условия
@@ -54,7 +56,7 @@ public class TimerController : MonoBehaviour
             && activeChildObjectRaw.activeSelf // Дочерний объект активен
             && timerText.text == "Встряхните") 
         {
-            Debug.Log("вторая хуйня");
+            Debug.Log("вторая");
             timerText.text = "Встряхнитe";
         }
     }
