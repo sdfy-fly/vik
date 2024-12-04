@@ -2,44 +2,57 @@ using UnityEngine;
 
 public class Dustpan : MonoBehaviour
 {
-    [SerializeField] private string targetTag;  // Тег целевого объекта (пустая упаковка картошки фри)
-    [SerializeField] private GameObject hiddenObject;  // Картошка фри в совке
-    [SerializeField] private GameObject replacementObject;  // Новый объект, который заменит упаковку
-
-    private void OnTriggerEnter(Collider other)
-    {
-        // Проверяем, имеет ли объект нужный тег (пустая упаковка картошки фри)
-        if (other.CompareTag(targetTag))
-        {
-            // Скрываем картошку фри в совке
-            if (hiddenObject != null)
-            {
-                hiddenObject.SetActive(false);
-                Debug.Log($"{hiddenObject.name} скрыта в совке.");
-            }
-            else
-            {
-                Debug.LogWarning("Объект картошки фри не назначен!");
-            }
-
-            // Заменяем упаковку картошки фри на новый объект
-            if (replacementObject != null)
-            {
-                // Сохраняем позицию и вращение упаковки
+    public GameObject potatoFreeScoop;
+    public GameObject potatoDerScoop;
+    public GameObject largePotatoFree;
+    public GameObject averagePotatoFree;
+    public GameObject smallPotatoFree;
+    public GameObject largePotatoDer;
+    public GameObject averagePotatoDer;
+    private void OnTriggerEnter(Collider other) {
+        if(other.CompareTag("LargePotato")){
+            if(potatoFreeScoop.activeSelf){
+                potatoFreeScoop.SetActive(false);
                 Vector3 position = other.transform.position;
                 Quaternion rotation = other.transform.rotation;
-
-                // Подменяем объект на новый
-                Instantiate(replacementObject, position, rotation);
-                Debug.Log($"{other.name} заменён на {replacementObject.name}");
-
-                // Удаляем старую упаковку картошки фри
+                Instantiate(largePotatoFree, position, rotation);
                 Destroy(other.gameObject);
             }
-            else
-            {
-                Debug.LogWarning("Объект для подмены не назначен!");
+            if(potatoDerScoop.activeSelf){
+                potatoDerScoop.SetActive(false);
+                Vector3 position = other.transform.position;
+                Quaternion rotation = other.transform.rotation;
+                Instantiate(largePotatoDer, position, rotation);
+                Destroy(other.gameObject);
             }
+            Debug.Log("LargePotato");
+        }
+        if(other.CompareTag("AveragePotato")){
+            if(potatoFreeScoop.activeSelf){
+                potatoFreeScoop.SetActive(false);
+                Vector3 position = other.transform.position;
+                Quaternion rotation = other.transform.rotation;
+                Instantiate(averagePotatoFree, position, rotation);
+                Destroy(other.gameObject);
+            }
+            if(potatoDerScoop.activeSelf){
+                potatoDerScoop.SetActive(false);
+                Vector3 position = other.transform.position;
+                Quaternion rotation = other.transform.rotation;
+                Instantiate(averagePotatoDer, position, rotation);
+                Destroy(other.gameObject);
+            }
+            Debug.Log("AveragePotato");
+        }
+        if(other.CompareTag("SmallPotato")){
+            if(potatoFreeScoop.activeSelf){
+                potatoFreeScoop.SetActive(false);
+                Vector3 position = other.transform.position;
+                Quaternion rotation = other.transform.rotation;
+                Instantiate(smallPotatoFree, position, rotation);
+                Destroy(other.gameObject);
+            }
+            Debug.Log("SmallPotato");
         }
     }
 }
