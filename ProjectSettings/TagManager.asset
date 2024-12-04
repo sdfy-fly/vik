@@ -17,6 +17,7 @@ TagManager:
   - LargePotato
   - AveragePotato
   - SmallPotato
+  - Cover
   layers:
   - Default
   - TransparentFX
