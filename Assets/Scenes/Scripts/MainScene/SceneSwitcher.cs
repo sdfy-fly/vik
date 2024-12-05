@@ -7,22 +7,17 @@ public class SceneSwitcher : MonoBehaviour
 {
 
     public string fruitureSceneName = "SampleScene";
+    public string drinksSceneName = "Drinks";
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void GoToFruitureScene()
     {
         SceneManager.LoadScene(this.fruitureSceneName);
+    }
+
+    public void GoToDrinksScene()
+    {
+        SceneManager.LoadScene(this.drinksSceneName);
     }
 
 }
