@@ -8,6 +8,7 @@ public class Cup : MonoBehaviour
     [SerializeField] private GameObject fanta;
     [SerializeField] private GameObject sprite;
     [SerializeField] private GameObject cover;
+    [SerializeField] private GameObject ice;
 
     public GameObject getColaObject(){
         return cola;
@@ -20,5 +21,8 @@ public class Cup : MonoBehaviour
     }
     public GameObject getCoverObject(){
         return cover;
+    }
+    public GameObject getIceObject(){
+        return ice;
     }
 }
