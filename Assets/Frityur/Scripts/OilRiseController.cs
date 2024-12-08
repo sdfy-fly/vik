@@ -10,6 +10,8 @@ public class OilRiseController : MonoBehaviour
     private Vector3 initialPosition; // Начальная позиция масла
     private bool isRising = false; // Флаг для отслеживания подъема
     public bool isActive = false;
+    public AudioSource audioSource;
+    public AudioClip fryingPotatoes;
 
     private void Start()
     {
@@ -17,6 +19,11 @@ public class OilRiseController : MonoBehaviour
         if (oilObject != null)
         {
             initialPosition = oilObject.position;
+        }
+        // Убедимся, что звук не зацикливается при старте
+        if (audioSource != null)
+        {
+            audioSource.loop = false;
         }
     }
 
@@ -43,7 +50,28 @@ public class OilRiseController : MonoBehaviour
             {
                 isRising = false;
                 isActive = true;
+                PlayFryingSound();
             }
+        }
+
+        // Если isActive, убедимся, что звук играет бесконечно
+        if (isActive && audioSource != null && !audioSource.isPlaying)
+        {
+            PlayFryingSound();
+        }
+    }
+
+    private void PlayFryingSound()
+    {
+        if (audioSource != null && fryingPotatoes != null)
+        {
+            audioSource.clip = fryingPotatoes; // Назначаем звук в AudioSource
+            audioSource.loop = true; // Включаем зацикливание
+            audioSource.Play();           // Запускаем воспроизведение
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource или AudioClip не назначены.");
         }
     }
 }

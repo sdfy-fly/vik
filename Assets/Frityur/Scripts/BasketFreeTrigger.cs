@@ -9,6 +9,8 @@ public class BasketFreeTrigger : MonoBehaviour
     public GameObject potatoPrefab; // Префаб картошки для полёта
     public Transform spawnPoint; // Точка начала полёта картошки
     public Transform targetPoint; // Точка, куда картошка будет лететь (например, корзина)
+    public AudioSource audioSource;
+    public AudioClip fallPotatoes;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -80,6 +82,20 @@ public class BasketFreeTrigger : MonoBehaviour
 
         // Удаляем временный объект после полёта
         Destroy(flyingPotato);
+        PlayFallSound();
         Debug.Log("Картошка достигла конечной точки и была удалена.");
+    }
+
+    private void PlayFallSound()
+    {
+        if (audioSource != null && fallPotatoes != null)
+        {
+            audioSource.clip = fallPotatoes; // Назначаем звук в AudioSource
+            audioSource.Play();           // Запускаем воспроизведение
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource или AudioClip не назначены.");
+        }
     }
 }
