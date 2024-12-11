@@ -22,6 +22,9 @@ public class TimerController : MonoBehaviour
     public GameObject activeChildObjectRaw; // Ссылка на дочерний объект, который должен быть активен
     public GameObject activeChildObjectCoocked;
     private bool isBasketInZone = false; // Флаг, находится ли корзина в триггер-зоне
+    public AudioSource audioSource;
+    public AudioClip soundTick;
+    public AudioClip soundRing;
 
     public void StartTimer()
     {
@@ -125,27 +128,69 @@ public class TimerController : MonoBehaviour
         {
             timerText.text = "Встряхните"; // Устанавливаем текст при окончании таймера
             timerText.fontSize = shakeFontSize; // Меняем размер шрифта на меньший
+            audioSource.loop = false; // Отключаем повторение звука Tick
+            audioSource.Stop(); // Останавливаем текущий звук
+            PlaySoundRing(); // Играем звук "Ring"
         }
         else
         {
             TimeSpan timeSpan = TimeSpan.FromSeconds(timeRemaining);
             timerText.text = timeSpan.ToString("mm\\:ss"); // Формат минуты:секунды
             timerText.fontSize = defaultFontSize; // Устанавливаем стандартный размер шрифта
+            PlaySoundTick(); // Включаем звук "Tick" с повторением
         }
     }
 
     private void UpdateFinishTimerDisplay()
     {
-        if(finishTimeRemaining <= 0)
+        if (finishTimeRemaining <= 0)
         {
-            timerText.text = "Готово";
+            timerText.text = "Готово"; // Устанавливаем текст при завершении
             timerText.fontSize = shakeFontSize;
+            audioSource.loop = false; // Отключаем повторение звука Tick
+            audioSource.Stop(); // Останавливаем текущий звук
+            PlaySoundRing(); // Играем звук "Ring"
         }
         else
         {
             TimeSpan timeSpan = TimeSpan.FromSeconds(finishTimeRemaining);
             timerText.text = timeSpan.ToString("mm\\:ss");
             timerText.fontSize = defaultFontSize;
+            PlaySoundTick(); // Включаем звук "Tick" с повторением
         }
     }
+
+
+
+    private void PlaySoundRing()
+    {
+        if (audioSource != null && soundRing != null)
+        {
+            audioSource.loop = false; // Выключаем повторение
+            audioSource.clip = soundRing; // Назначаем звук
+            audioSource.Play(); // Запускаем воспроизведение
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource или AudioClip для Ring не назначены.");
+        }
+    }
+
+    private void PlaySoundTick()
+    {
+        if (audioSource != null && soundTick != null)
+        {
+            audioSource.clip = soundTick; // Назначаем звук
+            audioSource.loop = true; // Включаем повторение
+            if (!audioSource.isPlaying) // Если звук не играет, запускаем
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource или AudioClip для Tick не назначены.");
+        }
+    }
+
 }

@@ -19,6 +19,11 @@ TagManager:
   - SmallPotato
   - Cover
   - Cup
+  - SmallFree
+  - AverageFree
+  - LargeFree
+  - AverageDer
+  - LargeDer
   layers:
   - Default
   - TransparentFX
