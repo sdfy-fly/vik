@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class AddIce : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class AddIce : MonoBehaviour
                 || triggerZone.GetComponent<CupToBottling>().getCup().GetComponent<Cup>().getSpriteObject().activeSelf
                 || triggerZone.GetComponent<CupToBottling>().getCup().GetComponent<Cup>().getFantaObject().activeSelf)
         ){
+            triggerZone.GetComponent<CupToBottling>().getCup().GetComponent<XRGrabInteractable>().enabled = false;
             GameObject newIce = Instantiate(icePrefab, icePrefab.transform.position, icePrefab.transform.rotation);
 
             Vector3 startPosition = newIce.transform.position;
@@ -41,6 +43,7 @@ public class AddIce : MonoBehaviour
 
             Destroy(newIce);
             triggerZone.GetComponent<CupToBottling>().getCup().GetComponent<Cup>().getIceObject().SetActive(true);
+            triggerZone.GetComponent<CupToBottling>().getCup().GetComponent<XRGrabInteractable>().enabled = true;
         }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PourDrink : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class PourDrink : MonoBehaviour
             && !triggerZone.GetComponent<CupToBottling>().getCup().GetComponent<Cup>().getSpriteObject().activeSelf
             && !triggerZone.GetComponent<CupToBottling>().getCup().GetComponent<Cup>().getFantaObject().activeSelf
         ){
+            triggerZone.GetComponent<CupToBottling>().getCup().GetComponent<XRGrabInteractable>().enabled = false;
             Debug.Log("Налилось");
             stream.SetActive(true);
             yield return new WaitForSeconds(4f);
@@ -40,6 +42,7 @@ public class PourDrink : MonoBehaviour
                     break;
             }
             ;
+            triggerZone.GetComponent<CupToBottling>().getCup().GetComponent<XRGrabInteractable>().enabled = true;
         }else{Debug.Log("Не налилось");}
         
     }

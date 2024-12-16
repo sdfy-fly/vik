@@ -100,4 +100,8 @@ public class CupToCloset : MonoBehaviour
         // Если свободной точки не нашлось
         Debug.Log("Нет свободных точек для привязки.");
     }
+
+    public List<GameObject> getSnapPoints(){
+        return snapPoints;
+    }
 }
