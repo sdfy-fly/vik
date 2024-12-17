@@ -24,6 +24,12 @@ TagManager:
   - LargeFree
   - AverageDer
   - LargeDer
+  - Starter
+  - Potato
+  - Drink
+  - Tube
+  - Sauce
+  - Napkin
   layers:
   - Default
   - TransparentFX
