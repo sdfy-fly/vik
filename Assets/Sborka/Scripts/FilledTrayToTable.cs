@@ -9,7 +9,7 @@ public class FilledTrayToTable : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.CompareTag("Tray")){
             other.transform.position = snapPoint.transform.position;
-            other.transform.position = snapPoint.transform.position;
+            other.transform.rotation = snapPoint.transform.rotation;
             snapPoint.GetComponent<SnapPoint>().SetIsOccupied(true, other.gameObject);
         }
     }

@@ -137,7 +137,7 @@ public class FillTray : MonoBehaviour
 
             // Устанавливаем объект на точку
             other.transform.position = snapPointTube.transform.position;
-            other.transform.rotation = Quaternion.Euler(0, 90, 0);  // Поворот на 90 градусов по оси Y
+            other.transform.rotation = Quaternion.Euler(-90, 0, 0);  // Поворот на 90 градусов по оси Y
             other.transform.SetParent(this.transform);
             Rigidbody rb = other.GetComponent<Rigidbody>();
             rb.isKinematic = true;
