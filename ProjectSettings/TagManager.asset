@@ -30,6 +30,17 @@ TagManager:
   - Tube
   - Sauce
   - Napkin
+  - Cola
+  - Fanta
+  - Sprite
+  - ColaIce
+  - FantaIce
+  - SpriteIce
+  - BigSpecial
+  - BigMack
+  - Roll
+  - Tray
+  - Naggets
   layers:
   - Default
   - TransparentFX
