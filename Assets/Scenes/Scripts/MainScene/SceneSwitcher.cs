@@ -8,6 +8,7 @@ public class SceneSwitcher : MonoBehaviour
 
     public string fruitureSceneName = "SampleScene";
     public string drinksSceneName = "Drinks";
+    public string buildingSceneName = "Sborka";
 
 
     public void GoToFruitureScene()
@@ -20,4 +21,8 @@ public class SceneSwitcher : MonoBehaviour
         SceneManager.LoadScene(this.drinksSceneName);
     }
 
+    public void GoToBuildingScene()
+    {
+        SceneManager.LoadScene(this.buildingSceneName);
+    }
 }
